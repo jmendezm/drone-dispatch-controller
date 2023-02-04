@@ -1,0 +1,5 @@
+{
+  "db_path": "./db.sqlite3",
+  "log_level": 1,
+  "show_logs": true
+}
