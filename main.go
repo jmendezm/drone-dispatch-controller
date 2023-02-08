@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	configFilePath := flag.String("config", "./config/config_dev.json", "Configuration file path")
+	configFilePath := flag.String("config", "./config/config.json", "Configuration file path")
 	flag.Parse()
 	server.RunServer(*configFilePath)
 }
