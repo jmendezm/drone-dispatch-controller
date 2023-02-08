@@ -7,8 +7,6 @@ import (
 )
 
 func InitLog(config *config.Config) {
-	var err error
-	var hook *SyslogHook
 	switch config.LogLevel {
 	case 0:
 		log.SetLevel(log.DebugLevel)
@@ -22,9 +20,6 @@ func InitLog(config *config.Config) {
 		log.SetLevel(log.FatalLevel)
 	case 5:
 		log.SetLevel(log.TraceLevel)
-	}
-	if err == nil {
-		log.AddHook(hook)
 	}
 	log.SetFormatter(&log.JSONFormatter{
 		DisableTimestamp: true,
