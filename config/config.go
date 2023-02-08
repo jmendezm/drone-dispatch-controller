@@ -10,6 +10,8 @@ type Config struct {
 	DatabasePath string `json:"db_path"`
 	ShowLogs     bool   `json:"show_logs"`
 	LogLevel     int    `json:"log_level"`
+	ShowGinLogs  bool   `json:"show_gin_logs"`
+	ListenPort   int    `json:"listen_port"`
 }
 
 func New(configFilePath string) *Config {
