@@ -10,12 +10,12 @@ import (
 func RegisterDrone(s services.DroneServiceInterface) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var req dto.Drone
-		if err := ctx.ShouldBindBodyWith(req, binding.JSON); err != nil {
+		if err := ctx.ShouldBindBodyWith(&req, binding.JSON); err != nil {
 			ctx.AbortWithStatusJSON(400, gin.H{"error": "bad parameters"})
 			return
 		}
 		if err := s.RegisterDrone(ctx, &req); err != nil {
-			ctx.AbortWithStatus(400)
+			ctx.AbortWithStatusJSON(400, gin.H{"error": err.Error()})
 			return
 		}
 		ctx.AbortWithStatus(200)
@@ -25,7 +25,7 @@ func RegisterDrone(s services.DroneServiceInterface) gin.HandlerFunc {
 func LoadDrone(s services.DroneServiceInterface) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var req dto.LoadDrone
-		if err := ctx.ShouldBindBodyWith(req, binding.JSON); err != nil {
+		if err := ctx.ShouldBindBodyWith(&req, binding.JSON); err != nil {
 			ctx.AbortWithStatusJSON(400, gin.H{"error": "bad parameters"})
 			return
 		}
