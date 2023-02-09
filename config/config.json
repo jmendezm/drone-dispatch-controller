@@ -1,7 +1,5 @@
 {
-  "db_path": "./db.sqlite3",
   "log_level": 1,
-  "show_gin_logs": true,
   "show_logs": true,
   "listen_port": 9000
 }
