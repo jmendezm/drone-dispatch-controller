@@ -19,7 +19,7 @@ type RestAPI struct {
 func (s *RestAPI) New() {
 	s.server = gin.New()
 	ginLogger := gin.Logger()
-	if !s.Configuration.ShowGinLogs {
+	if !s.Configuration.ShowLogs {
 		ginLogger = gin.LoggerWithConfig(gin.LoggerConfig{
 			Output: io.Discard,
 		})
