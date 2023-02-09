@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"errors"
 	"github.com/jmendezm/drone-dispatch-controller/dto"
 	"github.com/jmendezm/drone-dispatch-controller/internal/entity"
 	"github.com/jmendezm/drone-dispatch-controller/internal/repositories"
@@ -113,6 +114,9 @@ func (ds *DroneService) GetDroneBattery(ctx context.Context, droneSerial string)
 	var err error
 	var drone *entity.Drone
 	drone, err = ds.DBRepo.GetDroneBySerialNumber(ctx, droneSerial)
+	if drone == nil {
+		return 0, errors.New("drone not exists")
+	}
 	if err != nil {
 		return 0, err
 	}
