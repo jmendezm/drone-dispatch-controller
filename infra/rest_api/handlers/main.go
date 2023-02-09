@@ -8,7 +8,7 @@ import (
 
 func RegisterHandlers(r *gin.Engine, srv services.DroneServiceInterface) {
 	drone := r.Group("/drone")
-	drone.POST("/", json_handlers.RegisterDrone(srv))
+	drone.POST("", json_handlers.RegisterDrone(srv))
 	drone.POST("/load", json_handlers.LoadDrone(srv))
 	drone.GET("/load/:serial_number", json_handlers.GetDroneLoad(srv))
 	drone.GET("/available", json_handlers.GetAvailableDrones(srv))
